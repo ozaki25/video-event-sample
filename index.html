@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>video-event-sample</title>
+  </head>
+  <body>
+    <input type="file" id="file" accept="video/*" />
+    <ol id="result"></ol>
+    <script>
+      const inputFile = document.getElementById('file');
+      const result = document.getElementById('result');
+
+      inputFile.addEventListener('change', onChange);
+
+      function log(name, height, width) {
+        console.log(`${name} height: ${height}, width: ${width}`);
+        const li = document.createElement('li');
+        const text = document.createTextNode(
+          `${name} height: ${height}, width: ${width}`,
+        );
+        li.appendChild(text);
+        result.appendChild(li);
+      }
+
+      function onChange(event) {
+        result.innerHTML = '';
+
+        const file = event.target.files[0];
+
+        const video = document.createElement('video');
+        video.src = URL.createObjectURL(file);
+
+        video.addEventListener('abort', (e) => {
+          log('abort', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('canplay', (e) => {
+          log('canplay', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('canplaythrough', (e) => {
+          log('canplaythrough', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('durationchange', (e) => {
+          log('durationchange', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('emptied', (e) => {
+          log('emptied', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('ended', (e) => {
+          log('ended', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('error', (e) => {
+          log('error', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('loadeddata', (e) => {
+          log('loadeddata', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('loadedmetadata', (e) => {
+          log('loadedmetadata', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('loadstart', (e) => {
+          log('loadstart', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('pause', (e) => {
+          log('pause', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('play', (e) => {
+          log('play', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('playing', (e) => {
+          log('playing', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('progress', (e) => {
+          log('progress', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('ratechange', (e) => {
+          log('ratechange', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('resize', (e) => {
+          log('resize', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('seeked', (e) => {
+          log('seeked', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('seeking', (e) => {
+          log('seeking', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('stalled', (e) => {
+          log('stalled', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('suspend', (e) => {
+          log('suspend', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('timeupdate', (e) => {
+          log('timeupdate', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('volumechange', (e) => {
+          log('volumechange', e.target.videoHeight, e.target.videoWidth);
+        });
+
+        video.addEventListener('waiting', (e) => {
+          log('waiting', e.target.videoHeight, e.target.videoWidth);
+        });
+      }
+    </script>
+  </body>
+</html>
