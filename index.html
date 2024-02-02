@@ -15,10 +15,12 @@
 
       inputFile.addEventListener('change', onChange);
 
-      function log(name, height, width) {
+      function log(name, { videoHeight: height, videoWidth: width, duration }) {
         console.log(`${name} height: ${height}, width: ${width}`);
         const li = document.createElement('li');
-        const text = document.createTextNode(`${name} height: ${height}, width: ${width}`);
+        const text = document.createTextNode(
+          `${name} height: ${height}, width: ${width}, duration: ${isNaN(duration) ? 0 : duration}`
+        );
         li.appendChild(text);
         result.appendChild(li);
       }
@@ -35,95 +37,95 @@
         preview.replaceChildren(video);
 
         video.addEventListener('abort', (e) => {
-          log('abort', e.target.videoHeight, e.target.videoWidth);
+          log('abort', e.target);
         });
 
         video.addEventListener('canplay', (e) => {
-          log('canplay', e.target.videoHeight, e.target.videoWidth);
+          log('canplay', e.target);
         });
 
         video.addEventListener('canplaythrough', (e) => {
-          log('canplaythrough', e.target.videoHeight, e.target.videoWidth);
+          log('canplaythrough', e.target);
         });
 
         video.addEventListener('durationchange', (e) => {
-          log('durationchange', e.target.videoHeight, e.target.videoWidth);
+          log('durationchange', e.target);
         });
 
         video.addEventListener('emptied', (e) => {
-          log('emptied', e.target.videoHeight, e.target.videoWidth);
+          log('emptied', e.target);
         });
 
         video.addEventListener('ended', (e) => {
-          log('ended', e.target.videoHeight, e.target.videoWidth);
+          log('ended', e.target);
         });
 
         video.addEventListener('error', (e) => {
-          log('error', e.target.videoHeight, e.target.videoWidth);
+          log('error', e.target);
         });
 
         video.addEventListener('loadeddata', (e) => {
-          log('loadeddata', e.target.videoHeight, e.target.videoWidth);
+          log('loadeddata', e.target);
         });
 
         video.addEventListener('loadedmetadata', (e) => {
-          log('loadedmetadata', e.target.videoHeight, e.target.videoWidth);
+          log('loadedmetadata', e.target);
         });
 
         video.addEventListener('loadstart', (e) => {
-          log('loadstart', e.target.videoHeight, e.target.videoWidth);
+          log('loadstart', e.target);
         });
 
         video.addEventListener('pause', (e) => {
-          log('pause', e.target.videoHeight, e.target.videoWidth);
+          log('pause', e.target);
         });
 
         video.addEventListener('play', (e) => {
-          log('play', e.target.videoHeight, e.target.videoWidth);
+          log('play', e.target);
         });
 
         video.addEventListener('playing', (e) => {
-          log('playing', e.target.videoHeight, e.target.videoWidth);
+          log('playing', e.target);
         });
 
         video.addEventListener('progress', (e) => {
-          log('progress', e.target.videoHeight, e.target.videoWidth);
+          log('progress', e.target);
         });
 
         video.addEventListener('ratechange', (e) => {
-          log('ratechange', e.target.videoHeight, e.target.videoWidth);
+          log('ratechange', e.target);
         });
 
         video.addEventListener('resize', (e) => {
-          log('resize', e.target.videoHeight, e.target.videoWidth);
+          log('resize', e.target);
         });
 
         video.addEventListener('seeked', (e) => {
-          log('seeked', e.target.videoHeight, e.target.videoWidth);
+          log('seeked', e.target);
         });
 
         video.addEventListener('seeking', (e) => {
-          log('seeking', e.target.videoHeight, e.target.videoWidth);
+          log('seeking', e.target);
         });
 
         video.addEventListener('stalled', (e) => {
-          log('stalled', e.target.videoHeight, e.target.videoWidth);
+          log('stalled', e.target);
         });
 
         video.addEventListener('suspend', (e) => {
-          log('suspend', e.target.videoHeight, e.target.videoWidth);
+          log('suspend', e.target);
         });
 
         video.addEventListener('timeupdate', (e) => {
-          log('timeupdate', e.target.videoHeight, e.target.videoWidth);
+          log('timeupdate', e.target);
         });
 
         video.addEventListener('volumechange', (e) => {
-          log('volumechange', e.target.videoHeight, e.target.videoWidth);
+          log('volumechange', e.target);
         });
 
         video.addEventListener('waiting', (e) => {
-          log('waiting', e.target.videoHeight, e.target.videoWidth);
+          log('waiting', e.target);
         });
       }
     </script>
