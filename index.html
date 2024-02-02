@@ -6,9 +6,11 @@
   </head>
   <body>
     <input type="file" id="file" accept="video/*" />
+    <div id="preview"></div>
     <ol id="result"></ol>
     <script>
       const inputFile = document.getElementById('file');
+      const preview = document.getElementById('preview');
       const result = document.getElementById('result');
 
       inputFile.addEventListener('change', onChange);
@@ -16,9 +18,7 @@
       function log(name, height, width) {
         console.log(`${name} height: ${height}, width: ${width}`);
         const li = document.createElement('li');
-        const text = document.createTextNode(
-          `${name} height: ${height}, width: ${width}`,
-        );
+        const text = document.createTextNode(`${name} height: ${height}, width: ${width}`);
         li.appendChild(text);
         result.appendChild(li);
       }
@@ -30,6 +30,9 @@
 
         const video = document.createElement('video');
         video.src = URL.createObjectURL(file);
+        video.controls = true;
+        video.style.height = '200px';
+        preview.replaceChildren(video);
 
         video.addEventListener('abort', (e) => {
           log('abort', e.target.videoHeight, e.target.videoWidth);
